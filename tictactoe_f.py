@@ -13,14 +13,17 @@ def unzip_mtx(board_mtx):
     diagonal_b = [board_mtx[0][2], board_mtx[1][1], board_mtx[2][0]]
     eval_mtx.append(diagonal_a)
     eval_mtx.append(diagonal_b)
-    
     return eval_mtx    
     
 
 # Checkt the result of the game
-# Count the different symbols
+# Count the different symbols and check the tie state
 def check_result(mtx):
+    
+    counter_tie = 0
+    #print "initial: ", counter_tie #for debugging
     for i in mtx:
+        counter_tie += i.count(0)
         if i.count('X') == 3:
             print "The winner is Player X"
             print "Congrat!"
@@ -31,7 +34,11 @@ def check_result(mtx):
             return 1
         else:
             pass    
-
+    #print "The number of remain step(s): ", counter_tie # for debugging
+    if counter_tie == 0:
+            print "The tie is tie no tale!"
+            print "No winner!"
+            return 1
 
 #Draw the board function with print statements
 
@@ -89,7 +96,7 @@ def player_o():
         game_mtx[coordinate_o[0]][coordinate_o[1]] = 'O'
         #print game_mtx
         board_print()
-        check_result(unzip_mtx(game_mtx))
+        #check_result(unzip_mtx(game_mtx))
         if check_result(unzip_mtx(game_mtx)) != 1:
             player_x()
         else:
