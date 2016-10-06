@@ -63,8 +63,6 @@ game_mtx = [[0, 0, 0],
 # Player 1
 def player_x():
 
-    print "Lets play!"
-
     
     n = (raw_input("X movement: "))
 
@@ -110,5 +108,12 @@ def player_o():
         player_o()
 
 
-player_x()
 
+
+def main():
+    print "TicTacToe game!"
+    print "Give the symbol coordinates with separated by comma. i.e: 0,0 --> leftover corner"
+    print "First move Player 1, symbol: X"
+    print "Lets play!"
+    player_x()
+main()
